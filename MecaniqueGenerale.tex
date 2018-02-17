@@ -1,0 +1,154 @@
+\documentclass[a4paper,DIV=14,twoside,open=right,pdftex,10pt]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{natbib}
+	\setcitestyle{square}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage[misc,geometry]{ifsym} 
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{wasysym}
+\usepackage{nicefrac}
+\usepackage{mathrsfs}
+
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+	\newtheorem{theorem}{Théorème}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+
+\usepackage{pgfplots}
+	\tikzset{
+		every picture/.style={
+			execute at begin picture={
+   				\shorthandoff{:;!?};
+   			}
+		},
+	}	
+\usepackage{tikz-3dplot}
+	\tdplotsetmaincoords{60}{110}
+	
+
+\usetikzlibrary{calc,patterns,angles,quotes}
+\usetikzlibrary{shapes.misc}
+
+
+\pgfplotsset{compat=1.11}	
+\tikzset{font=\footnotesize}		
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{polar}
+\usetikzlibrary{spy}
+\usetikzlibrary{positioning}
+\usepackage{xstring}
+\usepackage{enumitem}
+	\newcommand\litem[1]{\item{\bfseries #1\\}}
+\usepackage{ccicons}
+\usepackage{xspace}
+
+\usepackage[normalem]{ulem}
+
+\usepackage{calc}
+\newlength{\depthofsumsign}
+\setlength{\depthofsumsign}{\depthof{$\sum$}}
+\newlength{\totalheightofsumsign}
+\newlength{\heightanddepthofargument}
+	
+	
+\usepackage[singlelinecheck=off,justification=centering]{subcaption}
+\newcommand{\mysubfig}[2]{%
+	\subcaptionbox{\label{#1}}{%
+		\centering
+		#2
+	}
+}
+\usepackage{multirow}
+\usepackage{titling}
+%\usepackage{authblk}
+\usepackage{eso-pic}
+\usepackage{wrapfig}
+\usepackage{cancel}
+
+\usepackage{framed}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@maketitle}{\LARGE \@title}{\fontsize{16}{19.2}\selectfont\@title}{}{}
+\makeatother
+
+%\usepackage{fixltx2e}
+\MakeRobust{\overrightarrow}
+
+\usepackage{ifthen}
+\def\ChoixDeVersion{prof} 
+
+\usepackage{xparse}
+
+
+\input{Macro}
+\usepackage[pdfborder={0 0 0},colorlinks=true,linkcolor=blue]{hyperref}
+\hypersetup{
+    pdfauthor={Dorian Depriester},
+    pdfsubject={Support de cours},
+    pdftitle={Mécanique Générale},
+    pdfkeywords={solide, indéformable, mécanique, dynamique, statique, cinétique, actions, puissance, énergie cinétique}
+} 
+  
+\usepackage[ucmark,toc,acronym]{glossaries}
+	\newglossary[nlg]{notation}{not}{ntn}{Notations}
+	\loadglsentries{Glossaire}
+	\makeglossaries
+	\renewcommand{\glspluralsuffix}{}
+	\setglossarystyle{index}  
+
+   
+
+\title{Mécanique Générale}
+\date{2017}
+\author{Dorian \textsc{Depriester}}
+%\affil[1]{
+%Arts et Métiers ParisTech,
+
+% 2 Cours des Arts et Métiers, 13617 Aix-en-Provence}
+
+
+%\includeonly{I-Actions}
+\begin{document}
+	%\maketitle
+\begin{titlingpage} %This starts the title page
+	\begin{center}
+		\begin{LARGE} 
+			\includegraphics[width=10cm]{Spinning-top-inception}\\
+			\vspace{1cm}
+			\textbf{\thetitle}\\
+		\end{LARGE}
+		
+		\vspace{3cm}
+		\large{\theauthor}\\
+		\thedate\\
+		\begin{footnotesize}
+			Arts et Métiers ParisTech,\\
+			2 Cours des Arts et Métiers, 13617 Aix-en-Provence
+		\end{footnotesize}
+		\vfill
+		\includegraphics[width=5cm]{ENSAM_logo}
+	\end{center}
+\end{titlingpage}
+
+	\addcontentsline{toc}{chapter}{Table des matières}
+	\tableofcontents
+	\printglossary[type=notation, title={Liste des symboles}, toctitle={Liste des symboles}]	
+%	\listoffigures
+%	\listoftables
+	
+
+	\include{Rappel}
+	\include{I-Actions}
+	\include{II-Cinematique}
+	\include{III-Cinetique}
+	\include{IV-Dynamique}
+	\include{V-Energie}
+	
+\end{document}

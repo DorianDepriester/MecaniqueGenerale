@@ -1,0 +1,282 @@
+\chapter{\'Energétique}
+
+\section{Puissances mécaniques}
+	\subsection{Puissance d'une action extérieure à un ensemble matériel}
+Soient deux ensembles matériels $E_1$ et $E_2$ distincts, en mouvement par rapport à un repère \gls{Rc}. On suppose que l'ensemble $E_1$ exerce sur chaque élément de masse $\dm$ de $E_2$, centrée en un point $P$, une action $\vect{f}$.
+
+\begin{definition}
+	La puissance à la date $t$ de l'action mécanique de $E_1$ sur $E_2$, dans son mouvement par rapport à \gls{Rc} vaut :
+	\begin{equation}
+		\puiss{E_1}{E_2}=\ints[E_2]{\vect{f}\left(P\right)\cdot\V{P}{E_2}}
+		\label{eq:def-puissance}
+	\end{equation}
+\end{definition}
+
+	\subsection{Cas d'un solide}
+	\begin{theorem}
+	\hidden{
+		Soit un ensemble $E$ et un solide $S$. La puissance des actions mécaniques de $E$ sur $S$, dans son mouvement par rapport à un repère \Rc{} est égale au produit du torseur des efforts de $E$ sur $S$ et du torseur cinématique du mouvement de $S$ par rapport à \Rc :
+		\begin{equation}
+			\puiss{E}{S}=\tf{E}{S}\cdot\tv{S}
+		\end{equation}
+	}
+	\end{theorem}
+	\begin{proof}
+	Dans le cas des solides indéformables, le mouvement de $S$ par rapport à \Rc{} peut être décrit à l'aide du torseur cinématique :
+	\begin{equation*}
+		\tv{S}=
+		\left\lbrace
+				\begin{array}{>{\displaystyle}c}
+					\Om{S}\\
+					\V{A}{S}	
+				\end{array}
+				\right\rbrace_A
+	\end{equation*}
+	On peut donc, d'après la relation du champ de moment de torseur, calculer la vitesse en chaque point de $S$ :
+	\begin{equation*}
+		\V{P}{S}=\V{A}{S}+\vect{PA}\wedge\Om{S}
+	\end{equation*}
+	L'équation \eqref{eq:def-puissance} devient donc :
+	\begin{align*}
+		\puiss{E}{S}&=\ints{\vect{f}\left(P\right)\cdot\left(\V{A}{S}+\vect{PA}\wedge\Om{S}\right)}\\
+					&=\ints{\vect{f}\left(P\right)\cdot\V{A}{S}}+\ints{\vect{f}\left(P\right)\cdot\left(\vect{PA}\wedge\Om{S}\right)}\\
+					&=\ints{\vect{f}\left(P\right)\cdot\V{A}{S}}+\ints{\Om{S}\cdot\left(\vect{f}\left(P\right)\wedge\vect{PA}\right)}\\
+					&=\V{A}{S}\cdot\ints{\vect{f}\left(P\right)}+\Om{S}\cdot\ints{\left(\vect{f}\left(P\right)\wedge\vect{PA}\right)} \numberthis \label{eq:detail-puissance}
+	\end{align*}
+	Soit $\tf{E}{S}$ le torseur des efforts de $E$ sur $S$ :
+	\begin{equation*}
+		\tf{E}{S}=
+		\left\lbrace
+				\begin{array}{>{\displaystyle}c}
+					\R{E}{S}\\
+					\M{A}{E}{S}	
+				\end{array}
+				\right\rbrace_A		
+	\end{equation*}
+	avec :
+	\begin{subequations}
+		\begin{align}
+			\R{E}{S}	&=\ints{\vect{f}\left(P\right)}\\
+			\M{A}{E}{S}	&=\ints{\left(\vect{f}\left(P\right)\wedge\vect{PA}\right)}
+		\end{align}
+	\end{subequations}
+	L'équation~\eqref{eq:detail-puissance} peut donc s'écrire :
+	\begin{align*}
+		\puiss{E}{S}&=\V{A}{S}\cdot\R{E}{S}+\Om{S}\cdot\M{A}{E}{S}\\
+					&=\tf{E}{S}\cdot\tv{S}
+	\end{align*}
+	\end{proof}
+	
+	\subsection{Changement de repère}
+	\begin{theorem}
+		\hidden{
+		Soient deux repères $\Rc_1$ et $\Rc_2$ et deux ensembles matériels $E_1$ et $E_2$. On a alors :
+		\begin{equation}
+			\puiss[\Rc_2]{E_1}{E_2}-\puiss[\Rc_1]{E_1}{E_2}=\tf{E_1}{E_2}\cdot\tv[\Rc_2]{\Rc_1}
+			\label{eq:changement-repere-puiss}
+		\end{equation}
+		}
+	\end{theorem}
+	\begin{proof}
+		Par définition de la puissance~\eqref{eq:def-puissance} :
+		\begin{subequations}
+			\begin{align}
+				\puiss[\Rc_1]{E_1}{E_2}=\ints[E_2]{\vect{f}\left(P\right)\cdot\V[\Rc_1]{P}{E_2}}\\
+				\puiss[\Rc_2]{E_1}{E_2}=\ints[E_2]{\vect{f}\left(P\right)\cdot\V[\Rc_2]{P}{E_2}}
+			\end{align}
+		\end{subequations}
+		Ainsi :
+		\begin{align*}
+			\puiss[\Rc_2]{E_1}{E_2}-\puiss[\Rc_1]{E_1}{E_2}
+			&=\ints[E_2]{\left(\vect{f}\left(P\right)\cdot\V[\Rc_2]{P}{E_2}-\vect{f}\left(P\right)\cdot\V[\Rc_1]{P}{E_2}\right)}\\
+			&=\ints[E_2]{\left(\vect{f}\left(P\right)\cdot\left(\V[\Rc_2]{P}{E_2}-\V[\Rc_1]{P}{E_2}\right)\right)}
+		\end{align*}
+		Or, d'après la relation de composition des vitesses (cf. \S\ref{sec:compo-vitesse} p.~\pageref{sec:compo-vitesse}) :
+		\begin{equation*}
+			\V[\Rc_2]{P}{E_2}-\V[\Rc_1]{P}{E_2}=\V[\Rc_2]{P}{\Rc_1}
+		\end{equation*}
+		On a donc :
+		\begin{align*}
+			\puiss[\Rc_2]{E_1}{E_2}-\puiss[\Rc_1]{E_1}{E_2}	&=\ints[E_2]{\vect{f}\left(P\right)\cdot\V[\Rc_2]{P}{\Rc_1}}\\
+															&=\tf{E_1}{E_2}\cdot\tv[\Rc_2]{\Rc_1}
+		\end{align*}
+	\end{proof}
+
+	\subsection{Puissance des actions mutuelles}
+	\begin{definition}
+		Soit deux ensembles matériels distincts $E_1$ et $E_2$. La puissance des actions mutuelles entre $E_1$ et $E_2$, dans leurs mouvements par rapport à un repère \Rc{} vaut :
+		\begin{equation}
+			\mathcal{P}\left(\nicefrac{E_1\leftrightarrow E_2}{\Rc}\right)=\puiss{E_1}{E_2}+\puiss{E_2}{E_1}
+		\end{equation}
+	\end{definition}
+
+	\begin{theorem}
+		La puissance des actions mutuelles est indépendante du repère utilisé.
+	\end{theorem}
+	On note donc simplement :
+		\begin{equation}
+			\mathcal{P}\left(\nicefrac{E_1\leftrightarrow E_2}{\Rc}\right)=\puissm{E_1}{E_2}
+		\end{equation}	
+	\begin{proof}
+		Soient deux repère $\Rc_1$ et $\Rc_2$. En reprenant la relation de changement de repère \eqref{eq:changement-repere-puiss} on trouve :
+		\begin{subequations}
+			\begin{align}
+				\puiss[\Rc_2]{E_1}{E_2}-\puiss[\Rc_1]{E_1}{E_2}=\tf{E_1}{E_2}\cdot\tv[\Rc_2]{\Rc_1} 				\label{eq:split-e1}	\\
+				\puiss[\Rc_2]{E_2}{E_1}-\puiss[\Rc_1]{E_2}{E_1}=\tf{E_2}{E_1}\cdot\tv[\Rc_2]{\Rc_1}
+				\label{eq:split-e2}	
+			\end{align}
+		\end{subequations}
+		En additionnant les équations~\eqref{eq:split-e1} et \eqref{eq:split-e2} on trouve :
+		\begin{equation*}
+			\begin{split}
+				\puiss[\Rc_2]{E_1}{E_2}-\puiss[\Rc_1]{E_1}{E_2}+\puiss[\Rc_2]{E_2}{E_1}-\puiss[\Rc_1]{E_2}{E_1}\\
+	=\tf{E_1}{E_2}\cdot\tv[\Rc_2]{\mathcal{R}_1} +\tf{E_2}{E_1}\cdot\tv[\Rc_2]{\Rc_1}
+			\end{split}
+		\end{equation*}
+		Ainsi :
+		\begin{align*}
+			\mathcal{P}\left(\nicefrac{E_1\leftrightarrow E_2}{\Rc_2}\right)-\mathcal{P}\left(\nicefrac{E_1\leftrightarrow E_2}{\Rc_1}\right)
+			&=
+			\tv[\Rc_2]{\Rc_1}\cdot\Big(\tf{E_1}{E_2}+\tf{E_2}{E_1}\Big)\\
+		\end{align*}
+		D'après le théorème des actions mutuelles (cf. \S\ref{sec:actions-mutuelles} p.~\pageref{sec:actions-mutuelles}), on a donc :
+		\begin{equation*}
+			\puiss[\Rc_2]{E_1}{E_2}-\puiss[\Rc_1]{E_1}{E_2}=0
+		\end{equation*}
+	\end{proof}
+	
+	
+	
+\section{Travail}
+	\begin{definition}
+		Le travail de l'action mécanique d'un ensemble de solides $E_1$ sur un ensemble de solides $E_2$ est, calculé entre les dates $t_1$ et $t_2$, dans le mouvement de $E_2$ par rapport à un repère $\Rc$ vaut :
+		\begin{equation}
+			W_{t_1}^{t_2}\left(E_1\rightarrow \nicefrac{E_2}{\Rc}\right)=\int_{t_1}^{t_2}\puiss{E_1}{E_2}\mathrm{d}t
+			\label{eq:def-travail}
+		\end{equation}
+	\end{definition}
+
+\section{\'Energie potentielle}
+	\subsection{Définition}
+\begin{definition}
+	Une énergie potentielle est associée à l'action mécanique de $E_1$ sur $E_2$, dans le mouvement de $E_2$ par rapport à $\Rc$, s'il existe une fonction scalaire $\Ep{E_1}{E_2}$ telle que :
+	\begin{equation}
+		\puiss{E_1}{E_2}=-\frac{\mathrm{d}}{\mathrm{d}t}\Big(\Ep{E_1}{E_2}\Big)
+		\label{eq:energie-pot}
+	\end{equation}
+\end{definition}
+
+	\subsection{Relation avec le travail}
+	\begin{theorem}
+		\hidden{
+		Si une énergie potentielle $\Ep{E_1}{E_2}$ est associée à l'action mécanique de $E_1$ sur $E_2$, on a alors :
+		\begin{equation}
+			W_{t_1}^{t_2}\left(E_1\rightarrow \nicefrac{E_2}{\Rc}\right)=-\Big(
+				\mathrm{E}_{\mathrm{p}}^{t_2}\left(E_1\rightarrow\nicefrac{E_2}{\Rc}\right)
+				-
+				\mathrm{E}_{\mathrm{p}}^{t_1}\left(E_1\rightarrow\nicefrac{E_2}{\Rc}\right)
+			\Big)
+		\end{equation}
+		avec $\mathrm{E}_{\mathrm{p}}^{t_1}\left(E_1\rightarrow\nicefrac{E_2}{\Rc}\right)$ et $\mathrm{E}_{\mathrm{p}}^{t_2}\left(E_1\rightarrow\nicefrac{E_2}{\Rc}\right)$ respectivement l'énergie potentielle aux dates $t_1$ et $t_2$.
+		}
+	\end{theorem}
+	\begin{proof}
+		D'après les définitions du travail \eqref{eq:def-travail} et de l'énergie potentielle \eqref{eq:energie-pot} :
+			\begin{align*}
+				W_{t_1}^{t_2}\left(E_1\rightarrow \nicefrac{E_2}{\Rc}\right)&=\int_{t_1}^{t_2}\puiss{E_1}{E_2}\mathrm{d}t\\
+				\puiss{E_1}{E_2}&=-\frac{\mathrm{d}}{\mathrm{d}t}\Big(\Ep{E_1}{E_2}\Big)
+			\end{align*}
+		Ainsi :
+		\begin{equation*}
+			W_{t_1}^{t_2}\left(E_1\rightarrow \nicefrac{E_2}{\Rc}\right)=-\int_{t_1}^{t_2}\frac{\mathrm{d}}{\mathrm{d}t}\Big(\Ep{E_1}{E_2}\Big)\mathrm{d}t
+		\end{equation*}
+		
+	\end{proof}
+
+
+\section{Théorème de l'énergie cinétique}
+	\subsection{Appliqué à un solide}
+	\begin{theorem}
+		\hidden{
+		Soient un solide $S$ et un repère galiléen \gls{Rg}. La dérivée par rapport au temps de l'énergie cinétique de $S$ dans son mouvement par rapport à \gls{Rg} est égale à la puissance des actions mécaniques extérieures à $S$, calculé dans \gls{Rg} :
+		\begin{equation}
+			\frac{\mathrm{d}}{\mathrm{d}t}\Big(\Ec[\gls{Rg}]{S}\Big)=\puiss[\gls{Rg}]{\overline{S}}{S}
+			\label{eq:th-Ec}
+		\end{equation}
+		}
+	\end{theorem}
+	\begin{proof}
+		D'après le \gls{pfd} (cf. \S\ref{sec:pfd} p.~\pageref{sec:pfd}) :
+		\begin{alignat*}{4}
+			 &&					\td[\gls{Rg}]{S}						&=&&\tf{\overline{S}}{S}&\\
+			 &\implies\quad&	\td[\gls{Rg}]{S}\cdot\tv[\gls{Rg}]{S}	&=&&\tf{\overline{S}}{S}&\cdot\tv[\gls{Rg}]{S}\\
+			 &&															&=&&\puiss[\gls{Rg}]{S}{\overline{S}}& \numberthis \label{eq:demo-thEc}
+		\end{alignat*}
+		\begin{align*}
+			\td[\gls{Rg}]{S}\cdot\tv[\gls{Rg}]{S}&=
+			\left\lbrace
+				\begin{array}{>{\displaystyle}c}
+					\ints[S]{\G[\gls{Rg}]{P}{S}}\\
+					\ints[S]{\vect{AP}\wedge\G[\gls{Rg}]{P}{S}}		
+				\end{array}
+			\right\rbrace_A	
+			\cdot		
+			\left\lbrace
+				\begin{array}{c}
+					\Om[\gls{Rg}]{S}\\
+					\V[\gls{Rg}]{A}{S}
+				\end{array}
+			\right\rbrace_A\\
+			&=
+			\ints[S]{\G[\gls{Rg}]{P}{S}}\cdot\V[\gls{Rg}]{A}{S}+\Om[\gls{Rg}]{S}\cdot\ints[S]{\vect{AP}\wedge\G[\gls{Rg}]{P}{S}}	
+		\end{align*}
+		D'après la relation de champ de moments de torseurs :
+		\begin{equation*}
+			\V[\gls{Rg}]{A}{S}=\V[\gls{Rg}]{P}{S}+\vect{AP}\wedge\Om[\gls{Rg}]{S}
+		\end{equation*}
+		On a donc :
+		\begin{equation}
+			\begin{split}
+				\td[\gls{Rg}]{S}\cdot\tv[\gls{Rg}]{S}=
+				\ints[S]{\G[\gls{Rg}]{P}{S}\cdot\V[\gls{Rg}]{P}{S}}
+				+\ints[S]{\G[\gls{Rg}]{P}{S}\cdot\left(\vect{AP}\wedge\Om[\gls{Rg}]{S}\right)}\\
+				+\ints[S]{\Om[\gls{Rg}]{S}\cdot\left(\vect{AP}\wedge\G[\gls{Rg}]{P}{S}\right)}
+			\end{split}
+			\label{eq:prod-tdtf}
+		\end{equation}
+		D'après la propriété d'anticommutativité du produit mixte :
+		\begin{equation*}
+			\ints[S]{\Om[\gls{Rg}]{S}\cdot\left(\vect{AP}\wedge\G[\gls{Rg}]{P}{S}\right)}=-\ints[S]{\G[\gls{Rg}]{P}{S}\cdot\left(\vect{AP}\wedge\Om[\gls{Rg}]{S}\right)}
+		\end{equation*}
+		L'équation~\eqref{eq:prod-tdtf} devient donc :
+		\begin{equation}
+			\td[\gls{Rg}]{S}\cdot\tv[\gls{Rg}]{S}=\ints[S]{\G[\gls{Rg}]{P}{S}\cdot\V[\gls{Rg}]{P}{S}}
+		\end{equation}
+		On sait que :
+		\begin{alignat*}{4}
+			&				& \frac{\mathrm{d}}{\mathrm{d}t}\left(\left\lVert\V[\gls{Rg}]{P}{S}\right\rVert^2\right)		&=&2&\G[\gls{Rg}]{P}{S}\cdot\V[\gls{Rg}]{P}{S}&\\
+			&\implies\qquad	& \frac{\mathrm{d}}{\mathrm{d}t}\left(\int_{P\in S}\left\lVert\V[\gls{Rg}]{P}{S}\right\rVert^2\dm\right)
+								&=&2&\int_{P\in S}\G[\gls{Rg}]{P}{S}\cdot\V[\gls{Rg}]{P}{S}&\dm\\
+			&\iff\qquad		& \frac{\mathrm{d}\Ec[\gls{Rg}]{S}}{\mathrm{d}t}	&=&	2&\td[\gls{Rg}]{S}\cdot\tv[\gls{Rg}]{S}	&				
+		\end{alignat*}
+		En remplaçant dans \eqref{eq:demo-thEc} les termes précédents, on aboutit au théorème de l'énergie cinétique \eqref{eq:th-Ec}.
+	\end{proof}
+	
+	\subsection{Appliqué à un ensemble de solides}
+	\begin{theorem}
+		\hidden{
+		Soient $E$ un ensemble de solides $S_1$, $S_2$,..., $S_n$ et \gls{Rg} un repère galiléen. La dérivée par rapport au temps de l'énergie cinétique de $E$ dans son mouvement par rapport à \gls{Rg} est égale à la somme des puissances des actions mécaniques extérieures à $E$ et des actions mutuelles, calculées dans \gls{Rg} :
+		\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}t}\Big(\Ec[\gls{Rg}]{E}\Big)=\puiss[\gls{Rg}]{\overline{E}}{E}+\sum_{i=1}^n	\sum_{j=i+1}^n \puissm{S_i}{S_j}
+		\end{equation}
+		}
+	\end{theorem}
+	\begin{proof}
+		Pour chaque solide $S_i$, le théorème de l'énergie cinétique ~\eqref{eq:th-Ec} donne :
+		\begin{alignat*}{4}
+			&				&\frac{\mathrm{d}}{\mathrm{d}t}\Big(\Ec[\gls{Rg}]{S_i}\Big)					&=&&\puiss[\gls{Rg}]{\overline{S_i}}{S_i}\\
+			&\implies\qquad	&\frac{\mathrm{d}}{\mathrm{d}t}\left(\sum_{i=1}^n\Ec[\gls{Rg}]{S_i}\right) 	&=&&\sum_{i=1}^n\puiss[\gls{Rg}]{\overline{S_i}}{S_i}\\
+			&\iff\qquad		&\frac{\mathrm{d}}{\mathrm{d}t}\Big(\Ec[\gls{Rg}]{E}\Big)				&=&&\puiss[\gls{Rg}]{\overline{E}}{E}+\sum_{i=1}^n\sum_{j=1}^n\puiss[\gls{Rg}]{S_j}{S_i}
+		\end{alignat*}
+	\end{proof}
+	

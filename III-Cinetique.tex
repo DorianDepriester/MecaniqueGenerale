@@ -1,0 +1,641 @@
+\chapter{Cinétique}
+\section{Principe de conservation de la masse}
+\begin{definition}
+	Soit $E$ un ensemble matériel. $E$ vérifie le principe de conservation de la masse si pour tout sous-ensemble $e$ de $E$, la masse de ce dernier est constante a cours du temps :
+	\begin{equation}
+		\forall e\subset E \quad m(e)=\mathrm{cst}
+		\label{eq:conservation-masse}
+	\end{equation}
+\end{definition}
+
+\begin{theorem}
+	\hidden{
+	Sous l'hypothèse de conservation de la masse, on peut \og dériver sous la somme \fg{} :
+	\begin{equation}
+		\frac{\mathrm{d}}{\mathrm{d}t}\left(\ints[E]{\varphi(P,t)}\right)=\ints[E]{\frac{\mathrm{d}\varphi(P,t)}{\mathrm{d}t}}
+	\end{equation}
+	}
+\end{theorem}
+
+
+\section{Torseur cinétique}
+	\subsection{Définition}
+	\begin{definition}
+		On appelle torseur cinétique de l'ensemble matériel $E$ dans son mouvement par rapport à un repère \Rc{} le torseur suivant :
+		\begin{equation}
+			\tc{E}=\left\lbrace
+				\begin{array}{>{\displaystyle}c}
+					\ints[E]{\V{P}{E}}\\
+					\mcin{A}{E}=\ints[E]{\vect{AP}\wedge\V{P}{E}}	
+				\end{array}
+				\right\rbrace_A
+				\label{eq:def-moment-cinetique}
+		\end{equation}
+	\end{definition}
+
+La résultante de ce torseur est appelée résultante cinétique, ou quantité de mouvement. Le moment de ce torseur, donné ici en $A$, est le moment cinétique en $A$, noté $\mcin{A}{E}$.
+
+	\subsection{Calcul de la résultante cinétique}
+	\begin{theorem}
+		\hidden{
+		Si $G$ est le centre d'inertie de $E$ et $m$ sa masse, on a alors :
+		\begin{equation}
+			\ints[E]{\V{P}{E}}=m\V{G}{E}
+			\label{eq:calcul-res-cine}
+		\end{equation}
+		}
+	\end{theorem}
+	\begin{proof}
+		Par définition du centre d'inertie (voir \S\ref{sec:centre-de-masse} p.~\pageref{sec:centre-de-masse}) :	
+		\begin{equation*}
+			m\vect{OG}=\ints{\vect{OP}}
+		\end{equation*}
+		Si $E$ vérifie la condition de conservation de la masse~\eqref{eq:conservation-masse}, on en déduit :
+		\begin{align*}
+		m\diff[\Rc]{\vect{OG}}&=\diff[\Rc]{\left(\ints[E]{\vect{OP}}\right)}=\ints[E]{\diff[\Rc]{\vect{OP}}}\\
+		m\V{G}{E}&=\ints[E]{\diff[\Rc]{\vect{OP}}}=\ints[E]{\V{P}{E}}
+		\end{align*}	
+	\end{proof}
+	
+	On peut donc écrire le torseur cinétique sous la forme suivante :
+	\begin{equation*}
+	\tc{E}=\left\lbrace
+		\begin{array}{c}
+			m\V{G}{E}\\
+			\mcin{A}{E}		
+		\end{array}
+		\right\rbrace_A
+	\end{equation*}
+
+\subsection{Cas particulier}
+Si la masse de $E$ est localisée en $G$, c'est-à-dire dans le cas d'un système ponctuel, le moment cinétique est alors nul en $G$ :
+	\begin{equation}
+	\tc{E}=\left\lbrace
+		\begin{array}{c}
+			m\V{G}{E}\\
+			\vect{O}		
+		\end{array}
+		\right\rbrace_G
+	\end{equation}
+	
+	\subsection{Champ de moments de torseur}
+	\begin{theorem}
+		\hidden{
+		\label{th:champ-moments-cinetique}
+		Le moment cinétique respecte la formule du champ de moments de torseur :
+		\begin{equation}
+			\mcin{B}{E}=\mcin{A}{E}+\vect{BA}\wedge\left(m\V{G}{E}\right)
+		\end{equation}
+		}
+	\end{theorem}
+	\begin{proof}
+		Soit $B$ un point quelconque. La définition du moment cinétique~\eqref{eq:def-moment-cinetique} nous donne :
+		\begin{equation*}
+			\mcin{B}{E}=\ints[E]{\vect{BP}\wedge\V{P}{E}}
+		\end{equation*}
+		En décomposant $\vect{BP}=\vect{BA}+\vect{AP}$ on a donc :
+		\begin{align*}
+			\mcin{B}{E}	&=\ints[E]{\vect{BA}\wedge\V{P}{E}}+\ints[E]{\vect{AP}\wedge\V{P}{E}}\\
+						&=\vect{BA}\wedge\ints[E]{\V{P}{E}}+\mcin{A}{E}
+		\end{align*}
+		D'après l'équation~\eqref{eq:calcul-res-cine}, on trouve donc :
+		\begin{equation*}
+			\mcin{B}{E}=\mcin{A}{E}+\vect{BA}\wedge\left(m\V{G}{E}\right)
+		\end{equation*}
+	\end{proof}
+
+D'après le théorème~\ref{th:champ-moments-cinetique}, $\tc{E}$ est bien un torseur.
+
+\section{Torseur dynamique}
+	\subsection{Définition}
+	\begin{definition}
+		On appelle torseur dynamique de l'ensemble matériel $E$ dans son mouvement par rapport à un repère \Rc{} le torseur suivant :
+		\begin{equation}
+			\td{E}=\left\lbrace
+				\begin{array}{>{\displaystyle}c}
+					\ints[E]{\G{P}{E}}\\
+					\mdyn{A}{E}=\ints[E]{\vect{AP}\wedge\G{P}{E}}		
+				\end{array}
+				\right\rbrace_A
+				\label{eq:def-moment-dynamique}
+		\end{equation}
+\end{definition}
+
+La résultante de ce torseur est appelée résultante dynamique, ou quantité d'accélération. Le moment de ce torseur, donné ici en $A$, est le moment dynamique en $A$, noté $\mdyn{A}{E}$.
+
+
+	\subsection{Calcul de la résultante dynamique}
+		\begin{theorem}
+				\hidden{
+			Si $G$ est le centre d'inertie de $E$ et $m$ sa masse, on a alors :
+			\begin{equation}
+				\ints[E]{\V{P}{E}}=m\G{G}{E}
+				\label{eq:calcul-res-dyna}
+			\end{equation}
+			}
+		\end{theorem}
+		\begin{proof}
+			En dérivant les termes de l'équation~\eqref{eq:calcul-res-cine}, on trouve :
+			\begin{align*}
+				m\diff[\Rc]{\V{G}{E}}	&=\diff[\Rc]{\left(\ints[E]{\V{P}{E}}\right)}\\
+				m\G{G}{E}				&=\ints[E]{\G{P}{E}}
+			\end{align*}
+		\end{proof}
+		
+	On peut donc écrire le torseur dynamique sous la forme suivante :
+	\begin{equation*}
+	\td{E}=\left\lbrace
+		\begin{array}{c}
+			m\G{G}{E}\\
+			\mdyn{A}{E}		
+		\end{array}
+		\right\rbrace_A
+	\end{equation*}
+	
+	\subsection{Cas particulier}
+	Si la masse de $E$ est localisée en $G$, c'est-à-dire dans le cas d'un système ponctuel, le moment cinétique est alors nul en $G$ :
+	\begin{equation}
+	\td{E}=\left\lbrace
+		\begin{array}{c}
+			m\G{G}{E}\\
+			\vect{O}		
+		\end{array}
+		\right\rbrace_G
+	\end{equation}
+	
+	\subsection{Champ de moments de torseur}
+	\begin{theorem}
+		\hidden{
+		\label{th:champ-moments-dynamique}
+		Le moment dynamique respecte la formule du champ de moments de torseur :
+		\begin{equation}
+			\mdyn{B}{E}=\mdyn{A}{E}+\vect{BA}\wedge\left(m\G{G}{E}\right)
+		\end{equation}
+		}
+	\end{theorem}
+	\begin{proof}
+		Soit $B$ un point quelconque. La définition du moment dynamique~\eqref{eq:def-moment-dynamique} nous donne :
+		\begin{equation*}
+			\mdyn{B}{E}=\ints[E]{\vect{BP}\wedge\G{P}{E}}
+		\end{equation*}
+		On décomposant $\vect{BP}=\vect{BA}+\vect{AP}$ on a donc :
+		\begin{align*}
+			\mdyn{B}{E}	&=\ints[E]{\vect{BA}\wedge\G{P}{E}}+\ints[E]{\vect{AP}\wedge\G{P}{E}}\\
+						&=\vect{BA}\wedge\ints[E]{\G{P}{E}}+\mdyn{A}{E}
+		\end{align*}
+		D'après l'équation~\eqref{eq:calcul-res-dyna}, on trouve donc :
+		\begin{equation*}
+			\mdyn{B}{E}=\mdyn{A}{E}+\vect{BA}\wedge\left(m\G{G}{E}\right)
+		\end{equation*}
+D'après le théorème~\ref{th:champ-moments-cinetique}, $\td{E}$ est bien un torseur.
+	\end{proof}
+
+
+
+
+\section{Relation entre moment cinétique et moment dynamique}
+	\subsection{Formule générale}
+	\begin{theorem}
+		\hidden{
+		Soit un ensemble $E$ de masse $m$, en mouvement par rapport à un repère $\Rc$. Soient $A$ un point quelconque et $G$ le centre d'inertie de $E$. On a alors :
+		\begin{equation}
+			\mdyn{A}{E}=\diff[\Rc]{\mcin{A}{E}}+m\V{A}{E}\wedge\V{G}{E}		
+		\end{equation}
+		}
+	\end{theorem}
+	\begin{proof}
+		Par définition du moment cinétique :
+		\begin{equation*}
+			\mcin{A}{E}=\ints[E]{\vect{AP}\wedge\V{P}{E}}
+		\end{equation*}
+		\begin{align*}
+			\diff{\mcin{A}{E}}	&=\ints[E]{\diff{\left(\vect{AP}\wedge\V{P}{E}\right)}}\\
+								&=\ints[E]{\left(\diff[\Rc]{\vect{AP}}\wedge\V{P}{E}+\vect{AP}\wedge\diff[\Rc]{\V{P}{E}}\right)}
+		\end{align*}
+		Soit $O$ un point fixe dans $\Rc$. En décomposant $\vect{AP}$ on a :
+		\begin{equation*}
+			\diff[\Rc]{\vect{AP}}=\diff[\Rc]{\vect{OP}}-\diff[\Rc]{\vect{OA}}=\V{P}{E}-\V{A}{S}
+		\end{equation*}
+		On a donc :
+		\begin{align*}
+			\diff{\mcin{A}{E}}	&=-\ints[E]{\V{A}{E}\wedge\V{P}{E}}+\ints[E]{\vect{AP}\wedge\G{P}{E}}\\
+								&=-\V{A}{E}\wedge\left(\ints[E]{\V{P}{E}}\right)+\mdyn{P}{E}\\
+								&=-m\V{A}{E}\wedge\V{G}{E}+\mdyn{P}{E}
+		\end{align*}
+	\end{proof}
+	
+	
+	\subsection{Cas particuliers}
+	\begin{itemize}
+		\item Si un point $A$ est fixe par rapport à \Rc :
+			\begin{equation}
+				\mdyn{A}{E}=\diff[\Rc]{\mcin{A}{E}}
+			\end{equation}
+		\item Moment dynamique en $G$ :
+			\begin{equation}
+				\mdyn{G}{E}=\diff[\Rc]{\mcin{G}{E}}
+			\end{equation}			
+	\end{itemize}
+		
+\newpage		
+	\section{Moment d'inertie d'un solide par rapport à un axe}
+		\subsection{Définition}
+	\begin{wrapfigure}{l}{0.5\textwidth}
+		\begin{tikzpicture}[scale=2]
+			\draw[-latex] (0,0,0) -- (1,0,0) node[anchor=north]{$x$};
+			\draw[-latex] (0,0,0) -- (0,1,0) node[anchor=west]{$y$};
+			\draw[-latex] (0,0,0) -- (0,0,1) node[anchor=east]{$z$};
+			\draw[thick,red] (2,1) ellipse (1 and 0.5);
+			\coordinate (P) at (1.5,1);
+			\node[cross=2pt] at (P){};
+			\node at (2.5,1) {$S$};
+			\node[anchor=west] at (P){$P$};
+			\node[anchor=north west] (O) at (0,0){$O$};
+			\draw[thick,blue,dashed] (0,0,0) -- (60:2) coordinate[pos=0.5](H) coordinate[pos=0.6](Pd) node[anchor=south]{$\Delta$}; 
+			\draw[very thick,-latex,blue] (0,0) -- (60:0.5) node[anchor=north west]{$\vect{i}$};
+			\node[anchor=south east] at (H) {$H$};
+			\draw (H) -- (P) coordinate[pos=0.2](PP);
+			\draw[blue] (PP)--++(60:0.2) -- (Pd);
+		\end{tikzpicture}
+	\end{wrapfigure}
+	
+	
+		Soient $S$ un solide de masse $m$, et $\Delta$ un axe passant par un point $O$. Pour tout point $P$ de $S$, on note $H$ la projection orthogonale de $P$ sur $\Delta$. 
+Le moment d'inertie de $S$ par rapport à l'axe $\Delta$ est alors :
+	\begin{equation}
+		I\left(\nicefrac{S}{\Delta}\right)=\ints{\left\|\vect{PH}\right\|^2}
+		\label{eq:moment-inertie}
+	\end{equation}
+	
+	\subsection{Calcul du moment d'inertie}
+On suppose $P$ de coordonnées $(x,y,z)$ dans une base $\Rc(O,\vect{x},\vect{y},\vect{z})$. Soit $\vect{i}$ vecteur directeur unitaire de $\Delta$ avec :
+	\begin{equation}
+		\vect{i}=\alpha\vect{x}+\beta\vect{y}+\gamma\vect{z}
+	\end{equation}
+	\begin{theorem}
+		Le moment d'inertie du solide $S$ par rapport à l'axe $\Delta$ vaut :
+		\begin{equation}
+			I\left(\nicefrac{S}{\Delta}\right)=\alpha^2A+\beta^2B+\gamma^2C-2\gamma\beta D-2\alpha\gamma E-2\alpha\beta F
+		\end{equation}
+		avec :
+		\begin{subequations}
+			\begin{align}
+				A&=\ints{\left(y^2+z^2\right)}	\label{eq:moment-inertie-A}\\
+				B&=\ints{\left(x^2+z^2\right)}\\
+				C&=\ints{\left(x^2+y^2\right)}\\
+				D&=\ints{yz}\\
+				E&=\ints{xz}\\
+				F&=\ints{xy}
+			\end{align}
+			\label{eq:composantes-inertie}
+		\end{subequations}
+	\end{theorem}
+	\begin{proof}
+		Par définition du produit vectoriel :
+		\begin{equation*}
+			\left\|\vect{i}\wedge\vect{OP}\right\|=\cancelto{1}{\left\|\vect{i}\right\|}\cdot\left\|\vect{OP}\right\|\cdot\left|\sin\left(\vect{i},\vect{OP}\right)\right|
+		\end{equation*}
+		Par projection, on sait que :
+		\begin{equation*}
+			\left\|\vect{PH}\right\|=\left\|\vect{OP}\right\|\cdot\left|\sin\left(\vect{i},\vect{OP}\right)\right| 
+		\end{equation*}
+		On a donc :
+		\begin{equation*}
+			\left\|\vect{PH}\right\|=\left\|\vect{i}\wedge\vect{OP}\right\|
+		\end{equation*}
+		Connaissant les coordonnées de $P$ et de $\vect{i}$ :
+		\begin{equation*}
+			\vect{i}\wedge\vect{OP}=
+			\coords{\alpha}{\beta}{\gamma}
+			\wedge
+			\coords{x}{y}{z}
+			=
+			\coords{\beta z-\gamma y}{\gamma x-\alpha z}{\alpha y-\beta x}
+		\end{equation*}
+		Ainsi :
+		\begin{align*}
+			\left\|\vect{PH}\right\|	&=\left(\beta z-\gamma y\right)^2+\left(\gamma x-\alpha z\right)^2+\left(\alpha y-\beta x\right)^2\\
+										&=\alpha^2\left(y^2+z^2\right)+\beta^2\left(x^2+z^2\right)+\gamma^2\left(x^2+y^2\right)-2\beta\gamma yz-2\alpha\gamma xz-2\alpha\beta xy
+		\end{align*}
+		D'après la définition du moment d'inertie, donnée en~\eqref{eq:moment-inertie} :
+		\begin{equation*}
+			\begin{split}
+				I\left(\nicefrac{S}{\Delta}\right)=
+					\alpha^2\ints{\left(y^2+z^2\right)}
+					+\beta^2\ints{\left(x^2+z^2\right)}
+					+\gamma^2\ints{\left(x^2+y^2\right)}\\
+					-2\beta\gamma\ints{yz}
+					-2\alpha\gamma\ints{xz}
+					-2\alpha\beta\ints{xy}
+				\end{split}
+		\end{equation*}
+	\end{proof}
+
+	\subsection{Appellations}
+	On appelle :
+		\begin{itemize}
+			\item $A$ le moment d'inertie de $S$ par rapport à l'axe $(O,\vect{x})$
+			\item $B$ le moment d'inertie de $S$ par rapport à l'axe $(O,\vect{y})$
+			\item $C$ le moment d'inertie de $S$ par rapport à l'axe $(O,\vect{z})$
+			\item $D$ le produit d'inertie de $S$ par rapport aux axes $(O,\vect{y})$ et $(O,\vect{z})$			
+			\item $E$ le produit d'inertie de $S$ par rapport aux axes $(O,\vect{x})$ et $(O,\vect{z})$			
+			\item $F$ le produit d'inertie de $S$ par rapport aux axes $(O,\vect{x})$ et $(O,\vect{y})$			
+		\end{itemize}
+		
+		
+\section{Opérateur d'inertie}
+	\subsection{Définition}
+	L'opérateur d'inertie d'un solide $S$ en un point $O$ est l'opérateur qui, à tout vecteur $\vect{u}$, associe le vecteur $\inope{S}{\vect{u}}$ tel que :
+	\begin{equation}
+		\inope{S}{\vect{u}}=\ints{\vect{OP}\wedge\left(\vect{u}\wedge\vect{OP}\right)}
+		\label{eq:operateur-intertie}
+	\end{equation}
+	Cet opérateur est linéaire ; on peut donc le représenter sous forme matricielle.
+	
+	\subsection{Matrice d'inertie}
+	\begin{theorem}
+		\hidden{
+		L'opérateur d'inertie peut s'écrire sous la forme matricielle suivante :
+		\begin{equation}
+			\inope{S}{\vect{u}}=\inmat{S}\vect{u} \quad \text{avec : }
+			\inmat{S}=\incomp{A}{B}{C}{D}{E}{F}
+		\end{equation}
+		}
+	\end{theorem}
+	\begin{proof}
+		On cherche à déterminer les composantes de la matrice $\inmat{S}$ telles que :
+		\begin{equation*}
+			\forall\vect{u}	\quad \inope{S}{\vect{u}}=\inmat{S}\vect{u}
+		\end{equation*}
+		Pour ce faire, on détermine chaque colonne en appliquant l'opérateur aux vecteurs de base $\vect{x}$, $\vect{y}$ et $\vect{z}$ :
+		\begin{equation*}
+			\inmat{S}=
+				\left[
+					\begin{pmatrix}
+						 ~\\
+						C_1\\
+						 ~ 
+					\end{pmatrix}
+					\begin{pmatrix}
+						 ~\\
+						C_2\\
+						 ~ 
+					\end{pmatrix}
+					\begin{pmatrix}
+						 ~\\
+						C_3\\
+						 ~ 
+					\end{pmatrix}					
+				\right]
+		\end{equation*}
+		avec :
+		\begin{subequations}
+			\begin{align}
+				C_1=\inope{S}{\vect{x}}\\				
+				C_2=\inope{S}{\vect{y}}\\				
+				C_3=\inope{S}{\vect{z}}			
+			\end{align}
+		\end{subequations}
+		Le calcul de la première colonne nous donne :
+		\begin{equation*}
+			C_1=\inope{S}{\vect{x}}=\ints{\vect{OP}\wedge\left(\vect{x}\wedge\vect{OP}\right)}
+		\end{equation*}
+		Soit $\vect{OP}=x\vect{x}+y\vect{y}+z\vect{z}$, on a alors :
+		\begin{equation*}
+			\vect{OP}\wedge\left(\vect{x}\wedge\vect{OP}\right)=
+				\coords{x}{y}{z}
+				\wedge
+				\left(
+					\coords{1}{0}{0}			
+					\wedge
+					\coords{x}{y}{z}
+				\right)
+				=
+				\coords{x}{y}{z}
+				\wedge
+				\coords{0}{-z}{y}
+				=
+				\coords{y^2+z^2}{-xy}{-xz}						
+		\end{equation*}
+		Ainsi :
+		\begin{equation*}
+			\inope{S}{\vect{x}}=
+			\prescript{}{\Rc}{\left|
+				\begin{aligned}
+					\ints{\left(y^2+z^2\right)}	&=A\\
+					-\ints{xy}					&=-F\\
+					-\ints{xz}					&=-E\\
+				\end{aligned}
+			\right.}
+		\end{equation*}
+		En appliquant la même procédure pour les directions $\vect{x}$ et $\vect{z}$, on trouve donc :
+		\begin{equation*}
+			\inope{S}{\vect{u}}=\inmat{S}\vect{u} \quad \text{avec : }
+			\inmat{S}=\incomp{A}{B}{C}{D}{E}{F}
+		\end{equation*}
+	\end{proof}
+	
+	\subsection{Propriétés de la matrice d'inertie}
+	La matrice d'inertie d'un solide respecte les propriétés suivantes :
+		\begin{itemize}
+			\item Ses composantes dépendent de la base choisie
+			\item Elle est symétrique, donc diagonalisable\footnote{D'après le \emph{théorème spectral}.}
+		\end{itemize}
+		
+\subsection{Théorème de Huygens}
+\begin{theorem}
+		\hidden{
+	Soit $O$ un point quelconque d'un solide $S$, de masse $m$ et de centre d'inertie $G$ avec :
+	\begin{equation}
+		\vect{OG}=\coords{x_G}{y_G}{z_G}
+	\end{equation}
+	On a alors :
+	\begin{equation}
+		\inmat{S}=\inmat[G]{S}
+		+m\incomp{y_G^2+z_G^2}{x_G^2+z_G^2}{x_G^2+y_G^2}{y_Gz_G}{x_Gz_G}{x_Gy_G}
+	\end{equation}
+	}
+\end{theorem}
+
+\begin{proof}
+	On pose :
+	\begin{equation*}
+		\vect{OP}=\coords{x}{y}{z} \quad \text{et} \quad \vect{GP}=\coords{x_1}{y_1}{z_1}
+	\end{equation*}
+	Comme on a $\vect{OP}=\vect{OG}+\vect{GP}$, on a :
+	\begin{subequations}
+		\begin{align}
+			x=x_G+x_1\\
+			y=y_G+y_1\\
+			z=z_G+z_1
+		\end{align}
+	\end{subequations}
+	Soient :
+	\begin{equation*}
+		\inmat{S}=\incomp{A_O}{B_O}{C_O}{D_O}{E_O}{F_O}
+		\quad
+		\text{et}
+		\quad
+		\inmat[G]{S}=\incomp{A_G}{B_G}{C_G}{D_G}{E_G}{F_G}
+	\end{equation*}
+	Commençons par déterminer le moment d'inertie $A_O$. D'après la définition donnée en \eqref{eq:moment-inertie-A} :
+	\begin{align}
+		A_O	&=\ints{\left(y^2+z^2\right)}=\ints{\left(\left(y_G+y_1\right)^2+\left(z_G+z_1\right)^2\right)}\\
+			&=\ints{\left(y_1^2+y_G^2+2y_1y_G+z_1^2+z_G^2+2z_1z_G\right)}\\
+			&=\ints{\left(y_1^2+z_1^2\right)}+2y_G\ints{y_1}+2z_G\ints{z_1}+m\left(z_G^2+y_G^2\right)
+			\label{eq:inertie-AO}
+	\end{align}
+	D'après la définition du centre d'inertie \eqref{eq:def-G} :
+		\begin{equation*}
+			\ints{\vect{GP}}=\vect{0}
+		\end{equation*}
+	On en déduit donc :
+		\begin{subequations}
+			\begin{align}
+				\ints{\vect{GP}}\cdot\vect{y}=\ints{\vect{GP}\cdot\vect{y}}=\ints{y_1}=0\\
+				\ints{\vect{GP}}\cdot\vect{z}=\ints{\vect{GP}\cdot\vect{z}}=\ints{z_1}=0
+			\end{align}
+		\end{subequations}
+	L'équation~\eqref{eq:inertie-AO} s'écrit donc :
+	\begin{equation*}
+		A_O=A_G+m\left(y_G^2+z_G^2\right)
+	\end{equation*}
+	En procédant de la même manière pour $B_O$ et $C_O$, on trouve :
+	\begin{subequations}
+		\begin{align}
+			B_O=B_G+m\left(x_G^2+z_G^2\right)\\		
+			C_O=C_G+m\left(x_G^2+y_G^2\right)	
+		\end{align}
+	\end{subequations}	
+	
+	
+	Calculons maintenant $D_O$ :
+	\begin{align*}
+		D_O	&=\ints{yz}=\ints{\left(y_G+y_1\right)\left(z_G+z_1\right)}\\
+			&=\ints{\left(y_Gz_G+y_Gz_1+z_Gy_1+y_1z_1\right)}\\
+			&=my_Gz_G+y_G\cancelto{0}{\ints{z_1}}+z_G\cancelto{0}{\ints{y_1}}+\ints{y_1z_1}\\
+			&=my_Gz_G+D_G
+	\end{align*}
+
+		En procédant de la même manière pour $E_O$ et $F_O$, on trouve :
+	\begin{subequations}
+		\begin{align}
+			E_O=E_G+mx_Gz_G\\		
+			F_O=F_G+mx_Gy_G		
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\section{Calcul du moment cinétique}
+	\subsection{Formule générale}
+	\begin{theorem}
+	\hidden{
+		Le moment cinétique en un point $A$ d'un solide $S$ de masse $m$, dans son mouvement par rapport à un repère \Rc{} vaut :
+		\begin{equation}
+			\mcin{A}{S}=m\vect{AG}\wedge\V{A}{S}+\inope[A]{S}{\Om{S}}
+		\end{equation}
+	}
+	\end{theorem}
+	\begin{proof}
+		Par définition du moment cinétique, donné en~\eqref{eq:def-moment-cinetique} :
+		\begin{equation*}
+			\mcin{A}{S}=\ints{\vect{AP}\wedge\V{P}{S}}
+		\end{equation*}
+		En décomposant $\V{P}{E}$ :
+		\begin{equation*}
+			\V{P}{S}=\V{A}{S}+\vect{PA}\wedge\Om{S}
+		\end{equation*}
+		on a donc :
+		\begin{align*}
+			\mcin{A}{S}	&=\ints{\vect{AP}\wedge\V{A}{S}}+\ints{\vect{AP}\wedge\left(\vect{PA}\wedge\Om{S}\right)}\\
+						&=\left(\ints{\vect{AP}}\right)\wedge\V{A}{E}+\ints{\vect{AP}\wedge\left(\Om{S}\wedge\vect{AP}\right)} 
+		\end{align*}
+		Par définition du centre de gravité, on sait que :
+		\begin{equation*}
+			\ints{\vect{AP}}=m\vect{AG}
+		\end{equation*}
+		De plus, d'après la définition de l'opérateur d'inertie, donnée en~\eqref{eq:operateur-intertie} :
+		\begin{equation}
+			\ints{\vect{AP}\wedge\left(\Om{S}\wedge\vect{AP}\right)}=\inope[A]{S}{\Om{S}}
+			\label{eq:calcul-moment-cinetique}
+		\end{equation}
+	\end{proof}
+	
+	\subsection{Cas particuliers}
+		On distingue de l'équation~\eqref{eq:calcul-moment-cinetique} trois cas particuliers :
+		\begin{itemize}
+			\item Si $A$ est fixe dans $\Rc$ :
+				\begin{equation}
+					\mcin{A}{S}=\inope[A]{S}{\Om{S}}
+				\end{equation}
+			\item En $G$ :
+				\begin{equation}
+					\mcin{G}{S}=\inope[G]{S}{\Om{S}}
+				\end{equation}
+			\item Si $S$ est en translation par rapport à $\Rc$, c'est-à-dire $\Om{S}=\vect{0}$ :
+				\begin{equation}
+					\mcin{G}{S}=\vect{0}
+				\end{equation}
+		\end{itemize}
+
+\newpage		
+\section{\'Energie cinétique}
+	\subsection{Définition}
+		\begin{definition}
+		\hidden{
+		Soit $S$ un solide en mouvement par rapport à un repère $\Rc$. On définit l'énergie cinétique de $S$ dans son mouvement par rapport à $\Rc$ :
+		\begin{equation}
+			\Ec[\Rc]{S}=\frac{1}{2}\ints{\left\|\V{P}{S}\right\|^2}
+			\label{eq:def-energie-cinetique}
+		\end{equation}
+		}
+		\end{definition}
+		
+	\subsection{Calcul}
+		\begin{theorem}
+		\hidden{
+			Soient $\tv{S}$ et $\tc{S}$ respectivement les torseurs cinématique et cinétique de $S$ dans son mouvement par rapport un repère $\Rc$. L'énergie cinétique associée à ce mouvement vaut alors :
+			\begin{equation}
+				E_{\mathrm{c}}=\frac{1}{2}\tv{S}\cdot\tc{S}
+				\label{eq:calcul-energie-cinetique}
+			\end{equation}
+		}
+		\end{theorem}
+
+		\begin{proof}
+			D'après la définition de l'énergie cinétique donnée en~\eqref{eq:def-energie-cinetique}, on a :
+			\begin{align}
+				2\Ec[\Rc]{S}	&=\ints{\left(\V{P}{S}\cdot\V{P}{S}\right)} \nonumber\\
+								&=\ints{\left(\V{P}{S}\cdot\V{A}{S}\right)}+\ints{\V{P}{S}\cdot\left(\vect{PA}\wedge\Om{S}\right)} \nonumber\\
+								&=\left(\ints{\V{P}{S}}\right)\cdot\V{A}{S}+\ints{\Om{S}\cdot\left(\vect{AP}\wedge\V{P}{S}\right)} \nonumber\\
+								&=m\V{G}{S}\cdot\V{A}{S}+\Om{S}\cdot\ints{\vect{AP}\wedge\V{P}{S}} \nonumber\\
+								&=m\V{G}{S}\cdot\V{A}{S}+\Om{S}\cdot\mcin{A}{S}
+								\label{eq:produit-torseur}
+			\end{align}
+			L'équation~\eqref{eq:produit-torseur} peut s'écrire comme le produit des torseurs cinématique et cinétique :
+			\begin{equation*}
+				2\Ec[\Rc]{S}=\tv{S}\cdot\tc{S}
+			\end{equation*}
+		\end{proof}
+		
+		\subsection{Cas particuliers}
+		On distingue de l'équation~\eqref{eq:calcul-energie-cinetique} deux cas particuliers :
+		\begin{itemize}
+			\item Si $S$ est en translation par rapport à $\Rc$ :
+				\begin{equation}
+					\Ec[\Rc]{S}=\frac{1}{2}m\left\|\V{G}{S}\right\|^2
+				\end{equation}
+			\item Si $S$ est en rotation autour d'un axe $(O,\vect{z})$ :
+				\begin{subequations}
+					\begin{align}
+						\Om{S}&=\dot{\theta}\vect{z}\\
+						\V{O}{S}&=\vec{O}
+					\end{align}
+				\end{subequations}
+				\begin{equation}
+					\implies\quad\Ec[\Rc]{S}=\frac{1}{2}I_{Oz}\dot{\theta}^2
+				\end{equation}
+				avec $I_{Oz}$ le moment d'inertie par rapport à l'axe $(O,\vect{z})$.
+		\end{itemize}
+
+		

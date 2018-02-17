@@ -1,0 +1,144 @@
+\newcommand{\vect}[1]{\ensuremath{\overrightarrow{#1}}}
+
+\newcommand{\R}[2]{%
+	\glsdisp{Resu}{\vect{R}}\left(#1\rightarrow#2\right)
+}
+\newcommand{\Rc}{\gls{Rc}}
+
+\newcommand{\M}[3]{%
+	\glsdisp{Mome}{\vect{M}}_{#1}\left(#2\rightarrow#3\right)
+}
+\newcommand{\V}[3][\Rc]{%
+	\glsdisp{V}{%
+		\vect{V}}\left(\nicefrac{#2\in#3}{#1}\right)
+}
+\newcommand{\G}[3][\Rc]{%
+	\glsdisp{G}{%
+		\vect{\Gamma}}\left(\nicefrac{#2\in#3}{#1}\right)
+}
+\newcommand{\Om}[2][\Rc]{%
+	\glsdisp{Omega}{%
+		\vect{\Omega}\left(\nicefrac{#2}{#1}\right)
+	}
+}
+\newcommand{\diff}[2][\Rc_0]{%
+	\left.\frac{\mathrm{d}#2}{\mathrm{d}t}\right|_{#1}
+}
+\newcommand{\mcin}[3][\Rc]{%
+	\glsdisp{sigma}{%
+		\vect{\sigma}}_{#2}\left(\nicefrac{#3}{#1}\right)
+}
+\newcommand{\mdyn}[3][\Rc]{%
+	\glsdisp{delta}{%
+		\vect{\delta}}_{#2}\left(\nicefrac{#3}{#1}\right)
+}
+
+\newcommand{\Ec}[2][\Rc_0]{%
+	\glsdisp{Ec}{%
+		E_{\mathrm{c}}}\left(\nicefrac{#2}{#1}\right)
+}
+\newcommand{\torseur}[2]{%
+	\left\lbrace\mathscr{#1}\left(#2\right)\right\rbrace
+}
+\newcommand{\tf}[2]{%
+	\torseur{\glsdisp{tf}{F}}{#1\rightarrow #2}
+}
+\newcommand{\tv}[2][\Rc]{%
+	\torseur{\glsdisp{tv}{V}}{\nicefrac{#2}{#1}}
+}
+\newcommand{\tc}[2][\Rc]{%
+	\torseur{\glsdisp{tc}{C}}{\nicefrac{#2}{#1}}
+}
+\newcommand{\td}[2][\Rc]{%
+	\torseur{\glsdisp{td}{D}}{\nicefrac{#2}{#1}}
+}
+
+\newcommand{\coords}[4][\Rc]{%
+	\prescript{}{#1}{
+		\left|
+			\begin{array}{l}
+				#2\\
+				#3\\
+				#4\\
+			\end{array}
+		\right.
+	}
+}
+\newcommand{\inmat}[2][O]{%
+	\glsdisp{inmat}{
+		\uuline{I_{#1}\left(#2\right)}
+	}
+}
+\newcommand{\incomp}[7][\Rc]{%
+	\begin{bmatrix}
+		#2		& -#7	& -#6\\
+		-#7		& #3	& -#5\\
+		-#6		& -#5	& #4	
+	\end{bmatrix}_{#1}
+}
+\newcommand{\inope}[3][O]{%
+	\glsdisp{inope}{%
+		\vect{\mathcal{I}}_{#1}\left(#2,#3\right)
+	}
+}
+\newcommand{\ints}[2][S]{%
+	\int_{P\in #1}#2\mathrm{d}m
+}
+
+\newcommand{\puiss}[3][\Rc]{%
+	\glsdisp{P}{\mathcal{P}}\left(#2\rightarrow\nicefrac{#3}{#1}\right)
+}
+
+\newcommand{\puissm}[2]{%
+	\glsdisp{Pm}{\mathcal{P}}\left(#1\rightarrow #1\right)
+}
+
+
+\newcommand{\Ep}[3][\Rc]{%
+	\glsdisp{P}{\mathrm{E}_{\mathrm{p}}}\left(#2\rightarrow\nicefrac{#3}{#1}\right)
+}
+
+\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+%default radius will be 1pt. 
+cross/.default={1pt}}
+
+
+\newenvironment{note}{
+	\itshape
+	Note :
+}{
+}
+
+\newcommand{\dm}{\mathrm{d}m}
+
+\newtheorem{definition}{Définition}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\newcommand{\hidden}[1]{%
+	\begin{framed}
+	\ifthenelse{%
+		\equal{\ChoixDeVersion}{prof}
+	 }{%
+		#1
+	 }{%
+	 	{\color{white}
+	 	#1
+	 	}
+	 }
+	 \end{framed}
+}
+
+%\newenvironment{tors}[1]{%
+%	\left\lbrace
+%		\begin{array}{c}
+%}{
+%		\end{array}
+%	\right\rbrace_{#1}	
+%}
+\NewDocumentEnvironment{tors}{m}{%
+	\left\lbrace
+		\begin{array}{c}
+}{%
+		\end{array}
+	\right\rbrace_{#1}	
+}

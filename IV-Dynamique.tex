@@ -1,0 +1,177 @@
+\chapter{Dynamique}
+
+
+\section[Principe Fondamental de la Dynamique]{\gls{pfd}}
+	\subsection{\'Enoncé}
+	\label{sec:pfd}
+\begin{theorem}
+\hidden{
+	Soit un ensemble matériel $E$. Il existe un repère \gls{Rg} tel que, pour tout sous-ensemble $e$ de $E$, le torseur dynamique de $e$ dans son mouvement par rapport à \gls{Rg} soit égal au torseur des actions extérieures à $e$ :
+	\begin{equation}
+		\forall e\subset E\quad \td[\gls{Rg}]{e}=\tf{\overline{e}}{e}
+		\label{eq:pfd}
+	\end{equation}
+}
+\end{theorem}
+	Le repère \gls{Rg} est dit galiléen.
+	
+	\subsection{Théorème de la résultante}
+	Du \gls{pfd}~\eqref{eq:pfd}, on en déduit le théorème de la résultante dynamique :
+	\begin{equation}
+		m\G[\gls{Rg}]{G}{e}=\R{\overline{e}}{e}
+	\end{equation}
+
+	\subsection{Théorème du moment}
+	Du \gls{pfd}~\eqref{eq:pfd}, on en déduit le théorème du moment dynamique :
+	\begin{equation}
+		\forall A\quad \mdyn[\gls{Rg}]{A}{e}=\M{A}{\overline{e}}{e}
+	\end{equation}
+
+\section{Théorème des actions mutuelles}
+\label{sec:actions-mutuelles}
+\begin{theorem}
+	\hidden{
+	Soient deux ensembles de solides $(e_1)$ et $(e_2)$ distincts. L'action mécanique de $(e_1)$ sur $(e_2)$ est opposée à l'action mécanique de $(e_2)$ sur $(e_1)$ :
+	\begin{equation}
+		\tf{e_1}{e_2}=-\tf{e_2}{e_1}
+	\end{equation}
+	}
+\end{theorem}
+\begin{proof}
+Le \gls{pfd} appliqué à l'ensemble $(e_1)$ nous donne :
+\begin{equation}
+	\td[\gls{Rg}]{e_1}=\tf{\overline{e_1}}{{e_1}}
+	\label{eq:pdf-e1}
+\end{equation}
+On pose :
+\begin{equation}
+	E=e_1\cup e_2
+	\label{eq:e1Ue2}
+\end{equation}
+On a donc :
+\begin{equation*}
+	\overline{e_1}=e_2\cup\overline{E}
+\end{equation*}
+Ainsi, \eqref{eq:pdf-e1} s'écrit alors :
+\begin{equation}
+	\td[\gls{Rg}]{e_1}=\tf{{e_2}}{{e_1}}+\tf{\overline{E}}{{e_1}}
+	\label{eq:pdf-e1-end}
+\end{equation}
+Par le même raisonnement, on a :
+\begin{equation}
+	\td[\gls{Rg}]{e_2}=\tf{{e_1}}{{e_2}}+\tf{\overline{E}}{{e_2}}
+	\label{eq:pdf-e2-end}	
+\end{equation}
+On trouve donc, d'après \eqref{eq:pdf-e1-end} et \eqref{eq:pdf-e2-end} :
+\begin{equation}
+	\td[\gls{Rg}]{e_1}+\td[\gls{Rg}]{e_2}=\tf{{e_2}}{{e_1}}+\tf{\overline{E}}{{e_1}}+\tf{{e_1}}{{e_2}}+\tf{\overline{E}}{{e_2}}
+	\label{eq:pfd-tot}
+\end{equation}
+D'après la définition \eqref{eq:e1Ue2}, on a :
+\begin{subequations}
+	\begin{align}
+		\td[\gls{Rg}]{e_1}+\td[\gls{Rg}]{e_2}&=\td[\gls{Rg}]{E}\\
+		\tf{\overline{E}}{{e_1}}+\tf{\overline{E}}{{e_2}}&=\tf{\overline{E}}{{E}}
+	\end{align}
+\end{subequations}
+Or, en appliquant le \gls{pfd} à $E$, on trouve :
+\begin{equation*}
+	\td[\gls{Rg}]{E}=\tf{\overline{E}}{{E}}
+\end{equation*}
+En simplifiant~\eqref{eq:pfd-tot}, on obtient donc :
+\begin{equation*}
+	\left\lbrace 0\right\rbrace=\tf{{e_2}}{{e_1}}+\tf{{e_1}}{{e_2}}
+\end{equation*}
+\end{proof}
+
+\section{Cas des repères non galiléens}
+\begin{theorem}
+	Soient $e$ un ensemble matériel, \gls{Rc} un repère quelconque et \gls{Rg} un repère galiléen. Le \gls{pfd} appliqué à $e$ nous donne alors :
+	\begin{equation}
+		\td{e}=\tf{\overline{e}}{e}
+			+\left\lbrace\mathcal{D}_{\mathrm{ie}}\left(e,\nicefrac{\gls{Rc}}{\gls{Rg}}\right)\right\rbrace
+			+\left\lbrace\mathcal{D}_{\mathrm{ic}}\left(e,\nicefrac{\gls{Rc}}{\gls{Rg}}\right)\right\rbrace
+		\label{eq:pfd-Rc}
+	\end{equation}
+	Avec $\left\lbrace\mathcal{D}_{\mathrm{ie}}\left(e,\nicefrac{\gls{Rc}}{\gls{Rg}}\right)\right\rbrace$ le torseur des effets d'inertie d'entrainement et $\left\lbrace\mathcal{D}_{\mathrm{ic}}\left(e,\nicefrac{\gls{Rc}}{\gls{Rg}}\right)\right\rbrace$ le torseur des effets d'inertie de Coriolis :
+\begin{subequations}
+	\begin{align}
+		\left\lbrace\mathcal{D}_{\mathrm{ie}}\left(e,\nicefrac{\gls{Rc}}{\gls{Rg}}\right)\right\rbrace&=
+		\left\lbrace
+			\begin{array}{>{\displaystyle}c}
+				-\ints[e]{\G{P}{e}}\\
+				-\ints[e]{\vect{AP}\wedge\G{P}{e}}
+			\end{array}
+		\right\rbrace_A\\
+		\left\lbrace\mathcal{D}_{\mathrm{ic}}\left(e,\nicefrac{\gls{Rc}}{\gls{Rg}}\right)\right\rbrace&=
+		\left\lbrace
+			\begin{array}{>{\displaystyle}c}
+				-\ints[e]{2\Om[\gls{Rg}]{\Rc}\wedge\V{P}{e}}\\
+				-\ints[e]{\vect{AP}\wedge\left[2\Om[\gls{Rg}]{\Rc}\wedge\V{P}{e}\right]}
+			\end{array}
+		\right\rbrace_A			
+	\end{align}	 
+\end{subequations}
+\end{theorem}
+\begin{proof}
+D'après la composition des accélérations (eq.~\ref{eq:compo-acceleration-th} p.~\pageref{eq:compo-acceleration-th}), on a :
+\begin{equation*}
+	\G[\gls{Rg}]{P}{e}=\G[\gls{Rc}]{P}{S}+\G[\gls{Rg}]{P}{\Rc}+2\Om[\gls{Rg}]{\Rc}\wedge\V[\gls{Rc}]{P}{S}
+\end{equation*}
+On a donc :
+\begin{equation*}
+	\td[\gls{Rg}]{e}=
+		\left\lbrace
+			\begin{array}{>{\displaystyle}c}
+				\ints[e]{\left[\G[\gls{Rc}]{P}{e}+\G[\gls{Rg}]{P}{\Rc}+2\Om[\gls{Rg}]{\Rc}\wedge\V[\gls{Rc}]{P}{e}\right]}\\
+				\ints[e]{\vect{AP}\wedge\left[\G[\gls{Rc}]{P}{e}+\G[\gls{Rg}]{P}{\Rc}+2\Om[\gls{Rg}]{\Rc}\wedge\V[\gls{Rc}]{P}{e}\right]}
+			\end{array}
+		\right\rbrace_A
+\end{equation*}
+\begin{equation*}
+	 	\begin{split}
+	 		=
+			\left\lbrace
+				\begin{array}{>{\displaystyle}c}
+					\ints[e]{\G[\gls{Rc}]{P}{e}}\\
+					\ints[e]{\vect{AP}\wedge\G[\gls{Rc}]{P}{e}}
+				\end{array}
+			\right\rbrace_A
+			+
+			\left\lbrace
+				\begin{array}{>{\displaystyle}c}
+					\ints[e]{\G[\gls{Rg}]{P}{\gls{Rc}}}\\
+					\ints[e]{\vect{AP}\wedge\G[\gls{Rg}]{P}{\gls{Rc}}}
+				\end{array}
+			\right\rbrace_A\\
+			+
+			\left\lbrace
+				\begin{array}{>{\displaystyle}c}
+					\ints[e]{2\Om[\gls{Rg}]{\Rc}\wedge\V[\gls{Rc}]{P}{e}}\\
+					\ints[e]{\vect{AP}\wedge\left[2\Om[\gls{Rg}]{\Rc}\wedge\V[\gls{Rc}]{P}{e}\right]}
+				\end{array}
+			\right\rbrace_A		
+		\end{split}
+\end{equation*}
+Or :
+\begin{equation*}
+	\left\lbrace
+		\begin{array}{>{\displaystyle}c}
+			\ints[e]{\G[\gls{Rc}]{P}{e}}\\
+			\ints[e]{\vect{AP}\wedge\G[\gls{Rc}]{P}{e}}
+		\end{array}
+	\right\rbrace_A
+	=
+	\td{e}
+\end{equation*}
+et d'après le \gls{pfd} \eqref{eq:pfd} appliqué à $e$ :
+\begin{equation*}
+	\td[\gls{Rg}]{e}=\tf{\overline{e}}{e}
+\end{equation*}
+On a donc :
+\begin{equation*}
+	\tf{\overline{e}}{e}=\td{e}
+	-\left\lbrace\mathcal{D}_{\mathrm{ie}}\left(e,\nicefrac{\gls{Rc}}{\gls{Rg}}\right)\right\rbrace
+	-\left\lbrace\mathcal{D}_{\mathrm{ic}}\left(e,\nicefrac{\gls{Rc}}{\gls{Rg}}\right)\right\rbrace
+\end{equation*}
+\end{proof}
